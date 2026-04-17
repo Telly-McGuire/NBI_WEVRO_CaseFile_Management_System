@@ -1,0 +1,93 @@
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.csproj.AssemblyReference.cache
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Agents.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\ViewFile.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\SelectFile.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\FilterPopup.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Login.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Files.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\EditFile.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\UploadFile.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\App.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\MainWindow.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Agents.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Explore.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Logout.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\ViewFile.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\SelectFile.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\FilterPopup.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Login.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Dashboard.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Files.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\EditFile.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\UploadFile.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Profile.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\App.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF_Content.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF_MarkupCompile.cache
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF_MarkupCompile.lref
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\CFMS_WPF.exe.config
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\CFMS_WPF.exe
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\CFMS_WPF.pdb
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Google.Protobuf.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Web.WebView2.Core.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\MySql.Data.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Buffers.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.IO.Pipelines.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Memory.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\ZstdSharp.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Google.Protobuf.pdb
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Google.Protobuf.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Web.WebView2.Core.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Web.WebView2.WinForms.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\Microsoft.Web.WebView2.Wpf.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\MySql.Data.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Buffers.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.IO.Pipelines.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Memory.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\MainWindow.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Explore.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Logout.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Dashboard.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Profile.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Themes\Generic.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.g.resources
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.Properties.Resources.resources
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.csproj.GenerateResource.cache
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.csproj.CoreCompileInputs.cache
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.csproj.Up2Date
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.exe
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.pdb
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\AgentsPopUp.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\AgentsPopUp.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\ConfirmationPopUp.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\ConfirmationPopUp.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\Admin Confirmation.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\Admin Confirmation.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\AddProfile.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\AddProfile.baml
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\About.g.cs
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\About.baml

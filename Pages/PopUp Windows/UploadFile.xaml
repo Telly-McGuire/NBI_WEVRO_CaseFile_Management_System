@@ -1,0 +1,221 @@
+﻿<Window x:Class="CFMS_WPF.UploadFile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Upload File"
+        WindowStartupLocation="CenterScreen"
+		WindowState="Maximized"
+        Background="#F5F6FA">
+
+	<Window.Resources>
+
+		<!-- TEXTBOX STYLE (smaller + aligned) -->
+		<Style TargetType="TextBox">
+			<Setter Property="Height" Value="34"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="Padding" Value="8,3"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="#F9FAFB"/>
+			<Setter Property="BorderBrush" Value="#D1D5DB"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="TextBox">
+						<Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6">
+							<ScrollViewer x:Name="PART_ContentHost"
+                                      Margin="6,0"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<!-- COMBOBOX STYLE -->
+		<Style TargetType="ComboBox">
+			<Setter Property="Height" Value="34"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="Padding" Value="6"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+
+		<!-- BUTTON STYLE -->
+		<Style TargetType="Button">
+			<Setter Property="Height" Value="34"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="Padding" Value="12,4"/>
+			<Setter Property="Margin" Value="6"/>
+			<Setter Property="Background" Value="#E5E7EB"/>
+			<Setter Property="Foreground" Value="Black"/>
+		</Style>
+
+	</Window.Resources>
+
+	<Grid Margin="30">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="1*"/>
+		</Grid.ColumnDefinitions>
+
+
+		<!-- PDF PREVIEW -->
+		<Border Background="White"
+        CornerRadius="15"
+        Padding="20"
+        Margin="0,0,20,0">
+
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<!-- PDF Viewer -->
+					<RowDefinition Height="Auto"/>
+					<!-- Page Indicator -->
+					<RowDefinition Height="Auto"/>
+					<!-- Button -->
+				</Grid.RowDefinitions>
+
+				<!-- PDF Viewer -->
+				<wv2:WebView2 x:Name="PdfViewer"
+                      Grid.Row="0"/>
+
+				<!-- Page Navigation -->
+				<StackPanel Orientation="Horizontal"
+							HorizontalAlignment="Center"
+							Margin="0,15,0,0"
+							Grid.Row="1">
+
+					<TextBlock x:Name="PageIndicator"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"/>
+				</StackPanel>
+
+				<!-- Open PDF Button at the bottom -->
+				<Button Content="Open PDF"
+						FontSize="20"
+						Width="120"
+						Grid.Row="2"
+						Margin="0,15,0,0"
+						HorizontalAlignment="Center"
+						Click="OpenPdf_Click"/>
+			</Grid>
+		</Border>
+
+
+
+		<!-- RIGHT SIDE - FILE DETAILS -->
+		<Border Grid.Column="1"
+        Background="White"
+        CornerRadius="15"
+        Padding="25">
+
+			<Grid>
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<!-- 🔥 SCROLLABLE FORM AREA -->
+				<ScrollViewer Grid.Row="0"
+                      VerticalScrollBarVisibility="Auto">
+
+					<StackPanel>
+
+						<TextBlock Text="File Name" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadFileName" Margin="0,0,0,12" IsReadOnly="True"/>
+
+						<TextBlock Text="File Path" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadFilePath" Margin="0,0,0,12" IsReadOnly="True"/>
+
+						<TextBlock Text="Case Type" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<ComboBox x:Name="Upload_CaseTypeComboBox" Margin="0,0,0,12" SelectionChanged="Upload_CaseTypeBox_SelectionChanged"/>
+
+						<TextBlock Text="Year" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadYear" Margin="0,0,0,12" TextChanged="txt_UploadYear_Changed"/>
+
+						<TextBlock Text="Case Number" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadCaseNo" Margin="0,0,0,12" TextChanged="txt_UploadCaseNo_Changed"/>
+
+						<TextBlock Text="Subject" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadSubject" Margin="0,0,0,12" TextChanged="txt_UploadCaseSubject_Changed"/>
+
+						<TextBlock Text="Nature of Case" FontWeight="SemiBold" Margin="0,0,0,0"/>
+						<TextBlock Text="(All Caps)" FontWeight="Light" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadNature"
+                         Height="160"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Margin="0,0,0,12" TextChanged="txt_UploadNature_TextChanged"
+						 />
+
+						<TextBlock Text="Complainants" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<TextBox x:Name="txt_UploadCaseComplainant" Margin="0,0,0,12" TextChanged="txt_UploadCaseComplainant_TextChanged"/>
+						<CheckBox x:Name="MultipleComplainantsCheckBox"
+								  Content="Multiple Complainants (add et al.)"
+								  Margin="0,0,0,12"
+								  Checked="MultipleComplainantsCheckBox_Checked"
+								  Unchecked="MultipleComplainantsCheckBox_UnChecked"/>
+
+						<TextBlock Text="Agent Name" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<ComboBox x:Name="Upload_AgentNameComboBox" Margin="0,0,0,12" SelectionChanged="Upload_AgentNameComboBox_SelectionChanged"/>
+
+						<Button x:Name="btn_AddAgent" Content="Add Agent"
+                        Width="100"
+                        Height="23"
+                        HorizontalAlignment="Left"
+						Click="AddAgent_Click"/>
+
+						<TextBlock Text="Status" FontWeight="SemiBold" Margin="0,0,0,4"/>
+						<ComboBox x:Name="Upload_StatusComboBox" Margin="0,0,0,12" SelectionChanged="Upload_StatusComboBox_SelectionChanged"/>
+
+						<StackPanel Margin="0,10,0,15">
+
+							<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+								<TextBlock Text="User: "
+                                   FontWeight="SemiBold"
+                                   Foreground="#777777"/>
+								<TextBox x:Name="txt_UploadUsername"
+                                 IsReadOnly="True"
+                                 BorderThickness="0"/>
+							</StackPanel>
+
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="Upload Date: "
+                                   FontWeight="SemiBold"
+                                   Foreground="#777777"/>
+								<TextBox x:Name="txt_UploadDate"
+                                 IsReadOnly="True"
+                                 BorderThickness="0"/>
+							</StackPanel>
+
+						</StackPanel>
+
+					</StackPanel>
+				</ScrollViewer>
+
+				<!-- 🔥 FIXED BOTTOM BUTTONS (ALWAYS VISIBLE) -->
+				<StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,15,0,0">
+
+					<Button Content="Cancel"
+                    Width="90"
+                    Click="Cancel_Click"/>
+
+					<Button Content="Upload"
+                    Width="100"
+                    Background="#3F72AF"
+                    Foreground="White"
+                    Click="Upload_Click"/>
+
+				</StackPanel>
+
+			</Grid>
+		</Border>
+
+	</Grid>
+</Window>

@@ -1,0 +1,205 @@
+﻿<Page x:Class="CFMS_WPF.ChangePassword"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Change Password"
+      Background="#EDE7EF">
+
+	<Grid>
+
+		<!-- Center Card -->
+		<Border Background="#F3F6F8"
+                CornerRadius="20"
+                BorderBrush="#D6D6D6"
+                BorderThickness="1"
+                Padding="30"
+                Margin="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+			<StackPanel>
+
+				<!-- Header -->
+				<StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+					<Image Source="C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\Images\NBI WEVRO LOGO 2026.png"
+                           Width="70"
+                           Height="70"
+                           Margin="0,0,15,0"/>
+
+					<TextBlock Text="Profile"
+                               FontSize="32"
+                               FontWeight="DemiBold"
+                               VerticalAlignment="Center"/>
+				</StackPanel>
+
+				<!-- Role -->
+				<Border Width="420"
+                        Height="50"
+                        CornerRadius="15"
+                        BorderThickness="1"
+                        Margin="0,0,0,20">
+
+					<TextBlock x:Name="txt_Role"
+                               TextAlignment="Center"
+                               FontSize="32"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+				</Border>
+
+				<!-- FORM GRID -->
+				<Grid>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="200"/>
+						<ColumnDefinition Width="420"/>
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<!-- Username -->
+						<RowDefinition Height="Auto"/>
+						<!-- Full Name -->
+						<RowDefinition Height="Auto"/>
+						<!-- Title -->
+						<RowDefinition Height="Auto"/>
+						<!-- New Password -->
+						<RowDefinition Height="Auto"/>
+						<!-- Confirm Password -->
+					</Grid.RowDefinitions>
+
+					<!-- Username -->
+					<TextBlock Text="Username:"
+                               Grid.Row="0" Grid.Column="0"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               Margin="0,0,15,15"/>
+
+					<Border Grid.Row="0" Grid.Column="1"
+                            Height="50"
+                            Background="#ECECEC"
+                            CornerRadius="15"
+                            BorderBrush="#D0D0D0"
+                            BorderThickness="1"
+                            Margin="0,0,0,15">
+
+						<TextBlock x:Name="txt_ProfileUser"
+                                   FontSize="18"
+                                   Padding="15,0"
+                                   VerticalAlignment="Center"/>
+					</Border>
+
+					<!-- Full Name -->
+					<TextBlock Text="Full Name:"
+                               Grid.Row="1" Grid.Column="0"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               Margin="0,0,15,15"/>
+
+					<Border Grid.Row="1" Grid.Column="1"
+                            Height="50"
+                            Background="#ECECEC"
+                            CornerRadius="15"
+                            BorderBrush="#D0D0D0"
+                            BorderThickness="1"
+                            Margin="0,0,0,15">
+
+						<TextBox x:Name="txt_ProfileName"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 FontSize="18"
+                                 Padding="15,0"
+                                 VerticalContentAlignment="Center"
+                                 IsReadOnly="True"/>
+					</Border>
+
+					<!-- Section Title -->
+					<TextBlock Text="Change Password"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               FontSize="24"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Center"
+                               Margin="0,20,0,15"/>
+
+					<!-- New Password -->
+					<TextBlock Text="New Password:"
+                               Grid.Row="3" Grid.Column="0"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               Margin="0,0,15,15"/>
+
+					<Border Grid.Row="3" Grid.Column="1"
+                            Height="50"
+                            Background="#ECECEC"
+                            CornerRadius="15"
+                            BorderBrush="#D0D0D0"
+                            BorderThickness="1"
+                            Margin="0,0,0,15">
+
+						<PasswordBox x:Name="NewPasswordBox"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     FontSize="18"
+                                     Padding="15,0"
+                                     VerticalContentAlignment="Center"/>
+					</Border>
+
+					<!-- Confirm Password -->
+					<TextBlock Text="Confirm Password:"
+                               Grid.Row="4" Grid.Column="0"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               Margin="0,0,15,0"/>
+
+					<Border Grid.Row="4" Grid.Column="1"
+                            Height="50"
+                            Background="#ECECEC"
+                            CornerRadius="15"
+                            BorderBrush="#D0D0D0"
+                            BorderThickness="1">
+
+						<PasswordBox x:Name="ConfirmPasswordBox"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     FontSize="18"
+                                     Padding="15,0"
+                                     VerticalContentAlignment="Center"/>
+					</Border>
+
+				</Grid>
+
+				<!-- Button -->
+				<Button Content="Set Password"
+                        Width="200"
+                        Height="50"
+                        Background="#4A6FA5"
+                        Foreground="White"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        HorizontalAlignment="Center"
+                        Margin="0,30,0,0"
+                        Click="SetPassword_Click">
+
+					<Button.Template>
+						<ControlTemplate TargetType="Button">
+							<Border Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+								<ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+							</Border>
+						</ControlTemplate>
+					</Button.Template>
+
+				</Button>
+
+			</StackPanel>
+		</Border>
+
+	</Grid>
+</Page>

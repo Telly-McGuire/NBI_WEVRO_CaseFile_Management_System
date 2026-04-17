@@ -1,0 +1,18 @@
+﻿<Application x:Class="CFMS_WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 ShutdownMode="OnLastWindowClose">
+
+	<Application.Resources>
+		<!-- Sidebar Button Style -->
+		<Style x:Key="SidebarButtonStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="15"/>
+			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+			<Setter Property="Foreground" Value="#2D3748"/>
+			<Setter Property="FontSize" Value="16"/>
+		</Style>
+
+	</Application.Resources>
+</Application>

@@ -1,0 +1,112 @@
+﻿<Window x:Class="CFMS_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CFMS_WPF"
+        mc:Ignorable="d"
+        Title="Case File Management System 2026" Height="1020" Width="1920"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="120"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<Image Source="C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\Images\NBI WEVRO LOGO 2026.png"
+           Stretch="Uniform"
+           Margin="0,10,0,0"
+           VerticalAlignment="Top"
+           Height="60"
+           Width="60"/>
+
+		<ListBox Grid.Column="0" 
+                 SelectionMode="Single"  
+                 x:Name="sidebar" 
+                 SelectionChanged="sidebar_SelectionChanged"
+                 Margin="0,75,0,50"  
+                 BorderThickness="0"
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<DockPanel LastChildFill="False"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+
+
+			<local:NavButton DockPanel.Dock="Top"
+                                    Navlink="/Pages/Profile.xaml" 
+                                    Margin="2" 
+                                    Padding="3"
+                                    Content="Profile"
+                                    FontSize="20"
+                                    Selected="NavButton_Profile"/>
+
+			<local:NavButton DockPanel.Dock="Top"
+                                    Navlink="/Pages/Dashboard.xaml" 
+                                    Margin="2" 
+                                    Padding="3" 
+                                    Content="Dashboard"
+                                    FontSize="20" Selected="NavButton_Dashboard"/>
+
+			<local:NavButton DockPanel.Dock="Top" 
+                                    Navlink="/Pages/Files.xaml"
+                                    Margin="2" Padding="3"
+                                    Content="Files" 
+                                    FontSize="20" 
+                                    Selected="NavButton_Files"/>
+
+			<local:NavButton DockPanel.Dock="Top"
+                                    Navlink="/Pages/Agents.xaml" 
+                                    Margin="2" 
+                                    Padding="3"
+                                    Content="Agents"
+                                    FontSize="20" 
+                                    Selected="NavButton_Agents"/>
+
+			<local:NavButton DockPanel.Dock="Top"
+                                    Navlink="/Pages/Logout.xaml" 
+                                    Margin="2" 
+                                    Padding="3"
+                                    Content="Log Out"
+                                    FontSize="20" 
+                                    Selected="NavButton_Agents"/>
+
+			<local:NavButton DockPanel.Dock="Bottom"
+                                    Navlink="/Pages/About.xaml" 
+                                    Margin="2" 
+                                    Padding="3"
+                                    Content="About"
+                                    FontSize="20" 
+                                    Selected="NavButton_Agents"/>
+
+		</ListBox>
+		<TextBlock Grid.Column="0"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,10"
+               FontSize="15"
+               IsHitTestVisible="False">
+
+
+                <Run Text="{Binding DataContext.NowPlusTen, 
+                            RelativeSource={RelativeSource AncestorType=TextBlock}, 
+                            StringFormat={}{0:hh:mm tt}}"/>
+
+                <LineBreak/>
+
+                <!-- So theres an error here, idk why it still works. So just ignore it -->
+                <Run Text="{Binding DataContext.NowPlusTen, 
+                            RelativeSource={RelativeSource AncestorType=TextBlock}, 
+                            StringFormat={}{0:MMMM dd, yyyy}}"/>
+
+		</TextBlock>
+		<Frame Grid.Column="1" x:Name="navframe" NavigationUIVisibility="Hidden" Background="White" />
+
+	</Grid>
+</Window>

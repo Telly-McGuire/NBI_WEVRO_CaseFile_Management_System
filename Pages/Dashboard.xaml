@@ -1,0 +1,293 @@
+﻿<Page x:Class="CFMS_WPF.Dashboard.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CFMS_WPF.Dashboard"
+        Title="Dashboard"
+        Background="#E6EBF0">
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="ProfileButtonStyle">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.85"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Lightweight button style for sidebar items -->
+        <Style TargetType="Button" x:Key="SidebarButtonStyle">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="RootGrid">
+        <!-- MAIN CONTENT -->
+        <Grid x:Name="MainContent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <Border Background="White" Padding="30,20,40,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" MinWidth="320"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Clickable Logo - left -->
+                    <Grid VerticalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="0.02*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Column="2" Text="Dashboard" FontSize="22" FontWeight="SemiBold" VerticalAlignment="Center" Margin="13,0,-13,0"/>
+                    </Grid>
+
+                    <!-- RIGHT: Search + Profile -->
+                </Grid>
+            </Border>
+
+            <!-- BODY -->
+            <ScrollViewer Grid.Row="1">
+                
+                <StackPanel Margin="50">
+					<StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+						<Border Background="#F1F5F9" CornerRadius="20" Width="1000" Height="38" Margin="0,0,15,0">
+							<Grid>
+								<TextBlock Text="Search..."
+				   Margin="15,0"
+				   VerticalAlignment="Center"
+				   Foreground="Gray"
+				   IsHitTestVisible="False">
+									<TextBlock.Style>
+										<Style TargetType="TextBlock">
+											<Setter Property="Visibility" Value="Collapsed"/>
+											<Style.Triggers>
+												<!-- Show when TextBox is empty -->
+												<DataTrigger Binding="{Binding Text, ElementName=txt_DashboardSearch}" Value="">
+													<Setter Property="Visibility" Value="Visible"/>
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</TextBlock.Style>
+								</TextBlock>
+								<TextBox x:Name="txt_DashboardSearch" 
+                                        Background="Transparent" 
+                                        BorderThickness="0" 
+                                        Padding="15,0" 
+                                        VerticalContentAlignment="Center" 
+                                        FontSize="13" 
+                                        Foreground="Gray"
+                                        TextChanged="DashboardSearch_TextChanged"/>
+
+								<!-- Suggestions Popup -->
+								<Popup x:Name="DashboardSearchPopup"
+					                   PlacementTarget="{Binding ElementName=txt_DashboardSearch}"
+					                   Placement="Bottom"
+					                   StaysOpen="False">
+
+									<Border Background="White" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+										<ListBox x:Name="DashboardSearchSuggestions"
+								 Width="1000"
+								 MouseLeftButtonUp="DashboardSuggestions_Click"/>
+									</Border>
+
+								</Popup>
+							</Grid>
+						</Border>
+
+					</StackPanel>
+					<TextBlock Text="Quick Access"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Margin="0,10"/>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,20,0,40"
+                                HorizontalAlignment="Center">
+
+                        <!-- SERVICES -->
+                        <Button x:Name="btn_DashboardServices"
+                                Width="250"
+                                Height="180"
+                                Margin="100,0"
+                                Click="Services_Click"
+                                Cursor="Hand"
+                                Background="White"
+                                BorderThickness="0"
+
+                                Style="{StaticResource SidebarButtonStyle}">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  ShadowDepth="2"
+                                                  Opacity="0.2"/>
+                            </Button.Effect>
+
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                <Path Data="M10,20 L60,20 L60,60 L10,60 Z"
+                                      Width="60"
+                                      Height="60"
+                                      Stretch="Uniform"
+                                      Fill="#CBD5E0"/>
+
+                                <TextBlock Text="Services"
+                                           Margin="0,20,0,0"
+                                           HorizontalAlignment="Center"
+                                           FontSize="14"
+                                           Foreground="Gray"/>
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- CRIME -->
+                        <Button x:Name="btn_DashboardCrime"
+                                Width="250"
+                                Height="180"
+                                Margin="100,0"
+                                Click="Crime_Click"
+                                Cursor="Hand"
+                                Background="White"
+                                BorderThickness="0"
+
+                                Style="{StaticResource SidebarButtonStyle}">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  ShadowDepth="2"
+                                                  Opacity="0.2"/>
+                            </Button.Effect>
+
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                <Path Data="M35,10 L60,60 L10,60 Z"
+                                      Width="60"
+                                      Height="60"
+                                      Stretch="Uniform"
+                                      Fill="#CBD5E0"/>
+
+                                <TextBlock Text="Crime"
+                                           Margin="0,20,0,0"
+                                           HorizontalAlignment="Center"
+                                           FontSize="14"
+                                           Foreground="Gray"/>
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- MISCELLANEOUS -->
+                        <Button x:Name="btn_DashboardMiscellaneous"
+                                Width="250"
+                                Height="180"
+                                Margin="100,0"
+                                Click="Misc_Click"
+                                Cursor="Hand"
+                                Background="White"
+                                BorderThickness="0"
+
+                                Style="{StaticResource SidebarButtonStyle}">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  ShadowDepth="2"
+                                                  Opacity="0.2"/>
+                            </Button.Effect>
+
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                <Ellipse Width="60"
+                                         Height="60"
+                                         Fill="#CBD5E0"/>
+
+                                <TextBlock Text="Miscellaneous"
+                                           Margin="0,20,0,0"
+                                           HorizontalAlignment="Center"
+                                           FontSize="14"
+                                           Foreground="Gray"/>
+                            </StackPanel>
+
+                        </Button>
+                    </StackPanel>
+
+                    <TextBlock Text="All Files"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Margin="0,10"/>
+                    <Border Background="White"
+                            CornerRadius="15"
+                            Padding="20"
+                            Height="400">
+                        <DataGrid x:Name="data_DashboardAllFiles" AutoGenerateColumns="False"
+                                  HeadersVisibility="Column"
+                                  RowHeight="40"
+                                  CanUserAddRows="False"
+								  CanUserReorderColumns="False"
+                                  IsReadOnly="True">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="Case Type" Binding="{Binding caseType}" Width="*"/>
+								<DataGridTextColumn Header="Year" Binding="{Binding caseYear}" Width="*"/>
+								<DataGridTextColumn Header="Case No." Binding="{Binding caseNo}" Width="*"/>
+								<DataGridTextColumn Header="Subject" Binding="{Binding caseSubject}" Width="*"/>
+								<DataGridTextColumn Header="Nature Of Case" Binding="{Binding caseNature}" Width="*">
+									<DataGridTextColumn.ElementStyle>
+										<Style TargetType="TextBlock">
+											<Setter Property="TextWrapping" Value="Wrap"/>
+										</Style>
+									</DataGridTextColumn.ElementStyle>
+								</DataGridTextColumn>
+								<DataGridTextColumn Header="Complainant" Binding="{Binding caseComplainant}" Width="*"/>
+								<DataGridTextColumn Header="Agent Name" Binding="{Binding caseAgent}" Width="*"/>
+								<DataGridTextColumn Header="Status" Binding="{Binding caseStatus}" Width="*"/>
+								<DataGridTemplateColumn Header="Action" Width="*">
+									<DataGridTemplateColumn.CellTemplate>
+										<DataTemplate>
+											<StackPanel Orientation="Horizontal">
+
+												<Button Content="View File"
+														Click="ViewFile_Click"
+														Width="60"
+														Height="30"
+														Margin="0,0,10,5"
+														Background="#4A6FA5"
+														Foreground="White"
+														BorderThickness="0"/>
+
+											</StackPanel>
+										</DataTemplate>
+									</DataGridTemplateColumn.CellTemplate>
+								</DataGridTemplateColumn>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Profile dropdown used by code-behind -->
+		<Border x:Name="ProfileDropdown"
+                Visibility="Collapsed"
+                Background="White"
+                CornerRadius="8"
+                Padding="10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,78,40,0"
+                Width="200"
+                Panel.ZIndex="50">
+			<StackPanel>
+				<Button Content="Logout" Click="Logout_Click" HorizontalAlignment="Stretch"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+</Page>
