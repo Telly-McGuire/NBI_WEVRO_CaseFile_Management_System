@@ -412,6 +412,7 @@ namespace CFMS_WPF
 		{
 			AddAgentPopup popup = new AddAgentPopup();
 			popup.ShowDialog();
+			LoadAgents();
 		}
 
 		private bool _isUpdatingText = false;

@@ -20,7 +20,7 @@
 
 				<!-- Header -->
 				<StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-					<Image Source="C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\Images\NBI WEVRO LOGO 2026.png"
+					<Image Source="\Images\NBI WEVRO LOGO 2026.png"
                            Width="70"
                            Height="70"
                            Margin="0,0,15,0"/>

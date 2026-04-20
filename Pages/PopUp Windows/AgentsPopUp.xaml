@@ -125,14 +125,14 @@
 							</Button.Template>
 						</Button>
 
-						<Button x:Name="btn_ClearAgent"
-									Content="Clear"
+						<Button x:Name="btn_CancelAgent"
+									Content="Cancel"
 									Height="30"
 									Width="200"
 									Background="#FF3F72AF" 
 									BorderBrush="{x:Null}" 
 									Foreground="White" 
-									Click="btn_ClearAgent_Click"
+									Click="btn_CancelAgent_Click"
 									Margin="0,0,0,10">
 							<Button.Template>
 								<ControlTemplate TargetType="Button">

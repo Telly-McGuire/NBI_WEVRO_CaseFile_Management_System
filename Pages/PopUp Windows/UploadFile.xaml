@@ -164,7 +164,7 @@
 
 						<Button x:Name="btn_AddAgent" Content="Add Agent"
                         Width="100"
-                        Height="23"
+                        Height="30"
                         HorizontalAlignment="Left"
 						Click="AddAgent_Click"/>
 

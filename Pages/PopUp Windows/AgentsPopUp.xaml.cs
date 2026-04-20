@@ -191,9 +191,10 @@ namespace CFMS_WPF
 			txt_AgentMI.Clear();
 		}
 
-		private void btn_ClearAgent_Click(object sender, RoutedEventArgs e)
+		private void btn_CancelAgent_Click(object sender, RoutedEventArgs e)
 		{
 			ClearFields();
+			this.Close();
 		}
 	}
 }
