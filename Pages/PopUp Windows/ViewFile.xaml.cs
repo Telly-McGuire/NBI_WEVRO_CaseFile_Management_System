@@ -115,22 +115,49 @@ namespace CFMS_WPF
 
 				if (rdr.Read())
 				{
-					string filePath = rdr["file_path"].ToString();
+					string dbPath = rdr["file_path"].ToString();
 
 					// Ensure absolute path
-					if (!System.IO.Path.IsPathRooted(filePath))
-					{
-						filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filePath);
-					}
+					// 🔹 Base network path (your shared folder)
+					string basePath = @"\\Wevro\wevro case files 2005-2022\";
 
-					// PDF preview in WebView2
-					if (System.IO.File.Exists(filePath))
+					// Normalize slashes
+					dbPath = dbPath.Replace("/", "\\");
+
+					string finalPath;
+
+					// 🔹 If old path starts with C:\ → convert to network path
+					if (dbPath.StartsWith("C:", StringComparison.OrdinalIgnoreCase))
 					{
-						PdfViewer.Source = new Uri(filePath, UriKind.Absolute);
+						int index = dbPath.IndexOf("WEVRO CASE FILES 2005-2022", StringComparison.OrdinalIgnoreCase);
+
+						if (index >= 0)
+						{
+							string relativePart = dbPath.Substring(index + "WEVRO CASE FILES 2005-2022".Length)
+													   .TrimStart('\\');
+
+							finalPath = System.IO.Path.Combine(basePath, relativePart);
+						}
+						else
+						{
+							// fallback (rare case)
+							finalPath = basePath;
+						}
 					}
 					else
 					{
-						MessageBox.Show("File not found at: " + filePath,
+						// 🔹 Already relative path (BEST PRACTICE going forward)
+						finalPath = System.IO.Path.Combine(basePath, dbPath);
+					}
+
+					// 🔹 Check and load PDF
+					if (System.IO.File.Exists(finalPath))
+					{
+						PdfViewer.Source = new Uri(finalPath, UriKind.Absolute);
+					}
+					else
+					{
+						MessageBox.Show("File not found at: " + finalPath,
 										"Missing File",
 										MessageBoxButton.OK,
 										MessageBoxImage.Warning);

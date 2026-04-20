@@ -14,7 +14,7 @@
                     Margin="20,20,20,20">
 
 			<!-- LOGO -->
-			<Image Source="C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\Images\NBI WEVRO LOGO 2026.png"
+			<Image Source="\Images\NBI WEVRO LOGO 2026.png"
                    Width="240"
                    Height="240"
                    Margin="0,0,0,15"

@@ -1,7 +1,6 @@
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\CFMS_WPF.csproj.AssemblyReference.cache
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Agents.baml
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\ViewFile.baml
-C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\SelectFile.baml
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\FilterPopup.baml
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Login.baml
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Files.baml
@@ -13,7 +12,6 @@ C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Agents.g.cs
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Explore.g.cs
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Logout.g.cs
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\ViewFile.g.cs
-C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\SelectFile.g.cs
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\PopUp Windows\FilterPopup.g.cs
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Login.g.cs
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\obj\Debug\Pages\Dashboard.g.cs

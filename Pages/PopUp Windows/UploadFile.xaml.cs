@@ -178,7 +178,7 @@ namespace CFMS_WPF
 			{
 				Filter = "PDF files (*.pdf)|*.pdf",
 				Title = "Select a PDF file",
-				InitialDirectory = @"C:\WEVRO CASE FILES 2005-2022"
+				InitialDirectory = @"\\192.168.254.205\wevro case files 2005-2022"
 			};
 
 			if (dialog.ShowDialog() == true)
