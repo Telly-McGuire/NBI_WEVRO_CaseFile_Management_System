@@ -114,7 +114,7 @@ namespace CFMS_WPF
 
 
 
-		private void LoadPDF()
+		private async void LoadPDF()
 		{
 			try
 			{
@@ -133,61 +133,49 @@ namespace CFMS_WPF
 
 				if (rdr.Read())
 				{
-					string dbPath = rdr["file_path"].ToString();
+					string serverIP = System.Configuration.ConfigurationManager.AppSettings["DbServer"];
 
-					// Ensure absolute path
-					// 🔹 Base network path (your shared folder)
-					string basePath = @"\\Wevro\wevro case files 2005-2022\";
+					string filePath = rdr["file_path"].ToString();
 
-					// Normalize slashes
-					dbPath = dbPath.Replace("/", "\\");
+					// Normalize forward slashes to backslashes
+					filePath = filePath.Replace("/", "\\");
 
-					string finalPath;
-
-					// 🔹 If old path starts with C:\ → convert to network path
-					if (dbPath.StartsWith("C:", StringComparison.OrdinalIgnoreCase))
+					// Swap in the IP from app.config
+					if (filePath.StartsWith("\\\\"))
 					{
-						int index = dbPath.IndexOf("WEVRO CASE FILES 2005-2022", StringComparison.OrdinalIgnoreCase);
+						int shareStart = filePath.IndexOf("\\", 2);
+						filePath = $@"\\{serverIP}" + filePath.Substring(shareStart);
+					}
 
-						if (index >= 0)
-						{
-							string relativePart = dbPath.Substring(index + "WEVRO CASE FILES 2005-2022".Length)
-													   .TrimStart('\\');
+					// Fill metadata and close reader BEFORE await
+					txt_EditFileName.Text = rdr["file_name"].ToString();
+					UsernameText.Text = rdr["uploaded_by"].ToString();
+					UploadDateText.Text = Convert.ToDateTime(rdr["uploaded_at"]).ToString("yyyy-MM-dd");
 
-							finalPath = System.IO.Path.Combine(basePath, relativePart);
-						}
-						else
-						{
-							// fallback (rare case)
-							finalPath = basePath;
-						}
+					rdr.Close();
+
+					if (System.IO.File.Exists(filePath))
+					{
+						await PdfViewer.EnsureCoreWebView2Async();
+
+						PdfViewer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+						PdfViewer.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+
+						string uri = new Uri(filePath).AbsoluteUri;
+						PdfViewer.CoreWebView2.Navigate(uri);
 					}
 					else
 					{
-						// 🔹 Already relative path (BEST PRACTICE going forward)
-						finalPath = System.IO.Path.Combine(basePath, dbPath);
-					}
-
-					// 🔹 Check and load PDF
-					if (System.IO.File.Exists(finalPath))
-					{
-						PdfViewer.Source = new Uri(finalPath, UriKind.Absolute);
-					}
-					else
-					{
-						MessageBox.Show("File not found at: " + finalPath,
+						MessageBox.Show("File not found at: " + filePath,
 										"Missing File",
 										MessageBoxButton.OK,
 										MessageBoxImage.Warning);
 					}
-
-					// Fill document metadata
-					txt_EditFileName.Text = rdr["file_name"].ToString();
-					UsernameText.Text = rdr["uploaded_by"].ToString();
-					UploadDateText.Text = Convert.ToDateTime(rdr["uploaded_at"]).ToString("yyyy-MM-dd");
 				}
-
-				rdr.Close();
+				else
+				{
+					rdr.Close();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -201,6 +189,7 @@ namespace CFMS_WPF
 				con.Close();
 			}
 		}
+
 		private void LoadCaseTypes(string currentType = null)
 		{
 			try

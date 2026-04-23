@@ -16,7 +16,7 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<Image Source="C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\Images\NBI WEVRO LOGO 2026.png"
+		<Image Source="\Images\NBI WEVRO LOGO 2026.png"
            Stretch="Uniform"
            Margin="0,10,0,0"
            VerticalAlignment="Top"

@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NBI Casefile Manager.exe" size="6451640">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NBI Casefile Manager.exe" size="6452664">
       <assemblyIdentity name="NBI Casefile Manager" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>a00TvExHI//gpsYGdpOOLZBQZfLjd5wlbvxmbZjb/AM=</dsig:DigestValue>
+        <dsig:DigestValue>Nw25Mutt7AweUukTV1zcnPdrpSEPsRGLRZHXXIX82Yw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -270,13 +270,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="App.config" size="2473">
+  <file name="App.config" size="2572">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ZcGfKLf+NcxG6SWnPSkqFNKFhgeHvCSTcDJmS4Fm0hM=</dsig:DigestValue>
+      <dsig:DigestValue>BvGSceljFtlUzkIazD+maXSlQCyaNYZ3GH1EbzqaJ5w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ICON NBI WEVRO LOGO 2026.ico" size="119869">
@@ -288,13 +288,13 @@
       <dsig:DigestValue>Jcf9lIFDMpWGEAED0T7NmMwbrL2CKEGakYAKxGai+XA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NBI Casefile Manager.exe.config" size="2473">
+  <file name="NBI Casefile Manager.exe.config" size="2572">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ZcGfKLf+NcxG6SWnPSkqFNKFhgeHvCSTcDJmS4Fm0hM=</dsig:DigestValue>
+      <dsig:DigestValue>BvGSceljFtlUzkIazD+maXSlQCyaNYZ3GH1EbzqaJ5w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="runtimes\win-arm64\native\WebView2Loader.dll" size="147520">

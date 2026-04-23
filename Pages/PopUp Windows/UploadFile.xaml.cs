@@ -172,13 +172,13 @@ namespace CFMS_WPF
 		{
 			// Ensure WebView2 is initialized
 			await PdfViewer.EnsureCoreWebView2Async();
-
+			string serverIP = System.Configuration.ConfigurationManager.AppSettings["DbServer"];
 			// Open File Explorer dialog
 			var dialog = new Microsoft.Win32.OpenFileDialog
 			{
 				Filter = "PDF files (*.pdf)|*.pdf",
 				Title = "Select a PDF file",
-				InitialDirectory = @"\\192.168.254.205\wevro case files 2005-2022"
+				InitialDirectory = @"\\" + serverIP + @"\wevro case files 2005-2022"
 			};
 
 			if (dialog.ShowDialog() == true)

@@ -21,5 +21,11 @@ namespace CFMS_WPF.Data
 		{
 			return new MySqlConnection(connectionString);
 		}
+
+		public string GetServerIP()
+		{
+			var conn = new MySqlConnectionStringBuilder(connectionString);
+			return conn.Server; // returns just the IP, e.g. "192.168.254.205"
+		}
 	}
 }

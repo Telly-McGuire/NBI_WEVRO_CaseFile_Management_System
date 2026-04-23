@@ -6,7 +6,6 @@
         mc:Ignorable="d"
         Title="AddProfile"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
         Background="#E9EEF2">
 
 	<Grid>

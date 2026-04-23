@@ -135,5 +135,10 @@ namespace NBI_Login
 				MessageBox.Show("Access denied.");
 			}
 		}
+
+		private void login_UsernameBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+		{
+
+		}
 	}
 }
