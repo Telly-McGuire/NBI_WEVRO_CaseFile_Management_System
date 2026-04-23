@@ -91,7 +91,7 @@ namespace CFMS_WPF.Pages.PopUp_Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/popup%20windows/addprofile.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/popup%20windows/addprofile.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\PopUp Windows\AddProfile.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

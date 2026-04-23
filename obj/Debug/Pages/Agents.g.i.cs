@@ -115,7 +115,7 @@ namespace CFMS_WPF.AddAgent {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/agents.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/agents.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Pages\Agents.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

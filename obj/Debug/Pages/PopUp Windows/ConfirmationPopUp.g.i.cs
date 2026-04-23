@@ -123,7 +123,7 @@ namespace CFMS_WPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/popup%20windows/confirmationpopup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/popup%20windows/confirmationpopup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\PopUp Windows\ConfirmationPopUp.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

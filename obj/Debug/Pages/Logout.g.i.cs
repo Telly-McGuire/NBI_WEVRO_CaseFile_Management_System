@@ -52,7 +52,7 @@ namespace CFMS_WPF.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/logout.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/logout.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Pages\Logout.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

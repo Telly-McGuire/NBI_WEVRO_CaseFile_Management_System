@@ -53,7 +53,7 @@ namespace CFMS_WPF.Pages.PopUp_Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/about.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/about.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Pages\About.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

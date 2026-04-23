@@ -1,9 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Configuration;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace CFMS_WPF.Data
 {
@@ -12,13 +14,9 @@ namespace CFMS_WPF.Data
 		private string connectionString;
 		public SetConnection()
 		{
-			connectionString = @"
-                server=192.168.254.205;
-                port=3307;
-                database=case_file_management_system;
-                uid=cfms;
-                pwd=wevrocfms2026;";
+			connectionString = ConfigurationManager.ConnectionStrings["case_file_management_system"].ConnectionString;
 		}
+
 		public MySqlConnection GetConnection()
 		{
 			return new MySqlConnection(connectionString);

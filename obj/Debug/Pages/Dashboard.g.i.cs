@@ -132,7 +132,7 @@ namespace CFMS_WPF.Dashboard {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/dashboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/dashboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Pages\Dashboard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

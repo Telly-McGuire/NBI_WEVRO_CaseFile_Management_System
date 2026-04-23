@@ -61,7 +61,7 @@
                              BorderThickness="0"
                              Background="Transparent"
                              FontSize="16"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center" TextChanged="login_UsernameBox_TextChanged"/>
 
 					<!-- Empty column to match password layout -->
 					<Border Grid.Column="2"
@@ -133,7 +133,7 @@
                         Height="45"
                         FontSize="16"
                         FontWeight="SemiBold"
-                        Background="#4E73A8"
+                        Background="#0A1F5E"
                         Foreground="White"
                         BorderThickness="0"
                         Margin="0,0,30,0"
@@ -154,10 +154,10 @@
                         Height="45"
                         FontSize="16"
                         FontWeight="SemiBold"
-                        Background="#FFD0D0D0"
+                        Background="#4E73A8"
                         Foreground="White"
                         BorderThickness="0"
-                        IsDefault="True" Click="btn_AddProfile_Click">
+                        IsDefault="True" Click="btn_AddProfile_Click" RenderTransformOrigin="1.467,-0.081">
 					<Button.Template>
 						<ControlTemplate TargetType="{x:Type Button}">
 							<Border Background="{TemplateBinding Background}" CornerRadius="10">

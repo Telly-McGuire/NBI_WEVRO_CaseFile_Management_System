@@ -115,7 +115,7 @@ namespace CFMS_WPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/popup%20windows/agentspopup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/popup%20windows/agentspopup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\PopUp Windows\AgentsPopUp.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

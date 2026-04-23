@@ -108,7 +108,7 @@ namespace NBI_Login {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CFMS_WPF;component/pages/login.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NBI Casefile Manager;component/pages/login.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Pages\Login.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="../NBICaseFileManagementSetup/NBICaseFileManagementSetup.vdproj" Type="Installer">
+  <Project Path="../NBI WEVRO Casefile Manager/NBI WEVRO Casefile Manager.vdproj" Type="Installer">
     <Build />
   </Project>
   <Project Path="CFMS_WPF.csproj" Id="8cb9bd6b-d572-43b0-830f-2cf58ea5ee8b" />
