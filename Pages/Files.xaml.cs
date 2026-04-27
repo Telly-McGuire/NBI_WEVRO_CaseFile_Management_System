@@ -3,17 +3,11 @@ using CFMS_WPF.Data;
 using CFMS_WPF.Pages.PopUp_Windows;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using static CFMS_WPF.FilterPopup;
-using static CFMS_WPF.UploadFile;
-using static CFMS_WPF.ViewFile;
 
 namespace CFMS_WPF
 {
@@ -41,7 +35,7 @@ namespace CFMS_WPF
 		{
 			try
 			{
-				dataFiles.ItemsSource = null;   
+				dataFiles.ItemsSource = null;
 
 				con.Open();
 				cmd = new MySqlCommand(@"
@@ -120,7 +114,7 @@ namespace CFMS_WPF
 				}
 				rdr.Close();
 				dataFiles.ItemsSource = list;
-				
+
 			}
 			catch (Exception ex)
 			{
@@ -310,8 +304,8 @@ namespace CFMS_WPF
 
 		private void Dashboard_Click(object sender, RoutedEventArgs e)
 		{
-	
-		}	
+
+		}
 
 		private void FilesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
@@ -321,8 +315,8 @@ namespace CFMS_WPF
 		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
-        }
-		
+		}
+
 		private void RefreshButton_Click(object sender, RoutedEventArgs e)
 		{
 			LoadFiles();

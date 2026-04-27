@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using NBI_Login;
 using System.Windows;
-using NBI_Login;
 
 namespace CFMS_WPF
 {

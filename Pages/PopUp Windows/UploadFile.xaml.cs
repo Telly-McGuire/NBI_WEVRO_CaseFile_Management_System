@@ -1,22 +1,10 @@
 ﻿using CFMS_WPF.Data;
-using Microsoft.Web.WebView2.Core;
-using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CFMS_WPF
 {
@@ -36,6 +24,7 @@ namespace CFMS_WPF
 			LoadCaseStatus();
 			LoadUser();
 			LoadTime();
+			InitializeWebView2();
 		}
 
 		public void SetConnection()
@@ -43,7 +32,21 @@ namespace CFMS_WPF
 			SetConnection db = new SetConnection();
 			con = db.GetConnection();
 		}
-
+		private async void InitializeWebView2()
+		{
+			try
+			{
+				var env = await Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync(
+					userDataFolder: System.IO.Path.Combine(
+						Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+						"NBI Casefile Manager"));
+				await PdfViewer.EnsureCoreWebView2Async(env);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("WebView2 init error:\n" + ex.Message);
+			}
+		}
 		//case types
 		private void LoadCaseTypes()
 		{
@@ -59,7 +62,7 @@ namespace CFMS_WPF
 
 				while (rdr.Read())
 				{
-					TypeList.Add( new CaseType 
+					TypeList.Add(new CaseType
 					{
 						type_ID = Convert.ToInt32(rdr["type_id"]),
 						type_name = rdr["type_name"].ToString()
@@ -125,7 +128,7 @@ namespace CFMS_WPF
 			try
 			{
 				con.Open();
-				cmd = new MySqlCommand(@"SELECT status_id, status_name FROM case_status",con);
+				cmd = new MySqlCommand(@"SELECT status_id, status_name FROM case_status", con);
 				rdr = cmd.ExecuteReader();
 
 				var StatusList = new List<CaseStatus>();
@@ -138,7 +141,7 @@ namespace CFMS_WPF
 						status_name = rdr["status_name"].ToString()
 					});
 				}
-				rdr.Close() ;
+				rdr.Close();
 
 				Upload_StatusComboBox.ItemsSource = StatusList;
 				Upload_StatusComboBox.DisplayMemberPath = "status_name";
@@ -168,46 +171,52 @@ namespace CFMS_WPF
 
 		private CaseMetaData SelectedDocument;
 		private List<CaseMetaData> DocumentList = new List<CaseMetaData>();
+
 		private async void OpenPdf_Click(object sender, RoutedEventArgs e)
 		{
-			// Ensure WebView2 is initialized
-			await PdfViewer.EnsureCoreWebView2Async();
-			string serverIP = System.Configuration.ConfigurationManager.AppSettings["DbServer"];
-			// Open File Explorer dialog
-			var dialog = new Microsoft.Win32.OpenFileDialog
+			try
 			{
-				Filter = "PDF files (*.pdf)|*.pdf",
-				Title = "Select a PDF file",
-				InitialDirectory = @"\\" + serverIP + @"\wevro case files 2005-2022"
-			};
+				string serverIP = System.Configuration.ConfigurationManager.AppSettings["DbServer"];
 
-			if (dialog.ShowDialog() == true)
-			{
-				// The File Path and Putting the file name
-				string filePath = dialog.FileName;
-				txt_UploadFilePath.Text = filePath;
-
-				string fileName = System.IO.Path.GetFileName(filePath);
-				txt_UploadFileName.Text = fileName;
-
-				// Convert to URI for WebView2
-				string uri = new Uri(filePath).AbsoluteUri;
-
-				PdfViewer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-				PdfViewer.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-
-				// Preview the PDF in WebView2
-				PdfViewer.CoreWebView2.Navigate(uri);
-
-				SelectedDocument = new CaseMetaData
+				var dialog = new Microsoft.Win32.OpenFileDialog
 				{
-					CaseFileName = fileName,
-					CaseFilePath = filePath,
-					CaseUploadedBy = Environment.UserName,   
-					CaseUploadAt = DateTime.Now,
+					Filter = "PDF files (*.pdf)|*.pdf",
+					Title = "Select a PDF file",
+					InitialDirectory = @"\\" + serverIP + @"\wevro case files 2005-2022"
 				};
 
-				DocumentList.Add(SelectedDocument);
+				if (dialog.ShowDialog() == true)
+				{
+					string filePath = dialog.FileName;
+					txt_UploadFilePath.Text = filePath;
+
+					string fileName = System.IO.Path.GetFileName(filePath);
+					txt_UploadFileName.Text = fileName;
+
+					string uri = new Uri(filePath).AbsoluteUri;
+
+					PdfViewer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+					PdfViewer.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+
+					PdfViewer.CoreWebView2.Navigate(uri);
+
+					SelectedDocument = new CaseMetaData
+					{
+						CaseFileName = fileName,
+						CaseFilePath = filePath,
+						CaseUploadedBy = Environment.UserName,
+						CaseUploadAt = DateTime.Now,
+					};
+
+					DocumentList.Add(SelectedDocument);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error loading PDF:\n" + ex.Message,
+								"PDF Viewer Error",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
 			}
 		}
 
@@ -215,7 +224,7 @@ namespace CFMS_WPF
 		{
 
 		}
-		
+
 		private void BuildFileName()
 		{
 			string prefix = string.Empty;
@@ -236,7 +245,7 @@ namespace CFMS_WPF
 			string yearInput = txt_UploadYear.Text.Trim();
 			if (int.TryParse(yearInput, out int yearValue))
 			{
-				year = (yearValue % 100).ToString("D2"); 
+				year = (yearValue % 100).ToString("D2");
 			}
 
 			string caseNo = txt_UploadCaseNo.Text.Trim();
@@ -268,7 +277,7 @@ namespace CFMS_WPF
 
 		private void Upload_Click(object sender, RoutedEventArgs e)
 		{
-			try 
+			try
 			{
 				SetConnection();
 				con.Open();
@@ -334,7 +343,7 @@ namespace CFMS_WPF
 			BuildFileName();
 		}
 
-		 //Year Handlers
+		//Year Handlers
 		private void txt_UploadYear_Changed(object sender, TextChangedEventArgs e)
 		{
 			BuildFileName();

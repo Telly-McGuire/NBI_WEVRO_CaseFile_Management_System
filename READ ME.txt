@@ -1,0 +1,173 @@
+﻿HIIIIII!!! :3
+
+This is the official NBI WEVRO Case Management System that was built by IT Investigative Interns of CPU and WVSU.
+
+Supervisor: Renzo John S. Ganancial
+Developers:
+Ryan Dioven V. Aguilar (Project Lead/ System Operations)
+Leandro Jose B. Ereneta (Network Operation)
+John Achilles V. Colon (Front End)
+Ed Carlo Nile L. Parcellano & Shereene P. Dasal (Database Operations)
+Julianne Ruth C. Pamplona (Graphic Design)
+
+To the future coders who will be touching the code, I wish you treat it with kindness so that it can function properly.
+We have developed this for the span of 3 months.
+
+In this READ ME I will be explaining the overall structure of the program so that you can understand the structure of the system so that you can develop and add further aspects in the future.
+I reccomend some aspects that you can add, This include but not limited to.
+* Subject Profile Database and Page
+* Crime map and Statistics
+* Localized Database Network for Entirety of WEVRO
+* Classification of Nature of Cases
+
+<----------------------------->
+
+SYSTEM STRUCTURE
+
+<PAGES>
+
+[MainWindow]
+This is where the Skeleton of the program is, there are different pages connected with a Navlink in the main XAML window where you can traverse and explore the different pages. 
+
+ex. 			<local:NavButton DockPanel.Dock="Top" 
+                                    Navlink="/Pages/Files.xaml"   <=== THIS IS THE MAIN NAVLINK THAT MAKES IT POSSIBLE TO EXPLORE DIFFERENT PAGES
+                                    Margin="2" Padding="3"
+                                    Content="Files" 
+                                    FontSize="20" 
+                                    Selected="NavButton_Files"/>
+
+Note: There are 3 errors there, its just a designer error. Ignore it lmao it still works.
+
+[LOGIN PAGE]
+This is the first thing you will see when you open the application, you connected to the database and lookup there if you account is in the system. If not, you can add additional users. 
+Ask Sir Renzo for access and or password.
+
+[Files.cs]
+This is the code-behind for the Files page, responsible for displaying, searching, filtering, and managing case records from the MySQL database. It builds dynamic SQL queries by joining multiple tables to show complete case information in a DataGrid, and provides popup windows for viewing, editing, and uploading files.
+Core Logic:
+
+* LoadFiles() — builds a WHERE 1=1 query and appends optional AND clauses depending on active search text or filter data, then populates the DataGrid
+* GetSearchSuggestions() — queries the DB for up to 10 autocomplete matches against case number, subject, and complainant
+* SearchBox_TextChanged() — fires on every keystroke, updates the DataGrid live and opens a suggestion dropdown popup
+* FilterButton_Click() — opens a filter dialog, collects the result, and passes it to LoadFiles()
+* EditFile_Click() — checks CurrentUser.CurrentRole; admins/developers go straight to the edit popup, everyone else must pass an Admin_Confirmation dialog first
+* RefreshButton_Click() — calls LoadFiles() with no arguments to reset the view
+
+<POP UP WINDOWS>
+
+[Upload, Edit, View Files]
+This is the code-behind for the Upload File popup window, responsible for collecting all case information, previewing the selected PDF, auto-generating a filename, and passing the data to a confirmation popup before saving.
+Core Logic:
+
+* Constructor — on load, calls five setup methods: loads agents, case types, statuses, the current logged-in username, and the current timestamp
+* LoadAgents() / LoadCaseTypes() / LoadCaseStatus() — each queries the DB and populates their respective ComboBoxes
+* OpenPdf_Click() — opens a file dialog pointing to the network server path, previews the selected PDF inside a WebView2 control, and stores the file metadata in a CaseMetaData object
+* BuildFileName() — auto-constructs the filename from all filled fields in the format [Prefix]-[YY]-[CaseNo]-[Complainant]-[et.al.]-[Agent]-[Status]; fires on every input change so the filename updates in real time
+* Upload_Click() — validates the file path, normalizes it, bundles all form data into a CaseFile object, then opens a ConfirmationPopUp before finalizing the upload
+* ClearUploadFields() — resets all inputs and navigates the PDF viewer back to blank
+* txt_UploadNature_TextChanged() — forces the nature field to uppercase in real time using a _isUpdatingText flag to avoid infinite loop recursion
+
+<NETWORK STRUCTURE>
+The system follows a client-server architecture where the WPF application runs on local machines and connects to a centralized MySQL database hosted on a server within the same local network (LAN).
+How the Connection Works:
+
+The connection string is stored in App.config under the key case_file_management_system, keeping credentials out of the source code
+SetConnection reads that string via ConfigurationManager and returns a MySqlConnection object whenever a page or window needs DB access
+GetServerIP() parses the connection string to extract just the server's IP address (e.g. 192.168.254.205), which is also reused elsewhere — 
+like in UploadFile where it builds the network path \\[IP]\wevro case files 2005-2022 to point the file dialog directly to the shared folder on the server
+
+In Practice:
+Every page creates its own SetConnection instance and calls GetConnection() to get a fresh MySqlConnection
+Connections are opened and closed per-method using try/finally blocks — there is no persistent connection kept alive
+The file storage and the database both live on the same server machine, so the IP ties together both the MySQL access and the shared folder navigation
+
+<DATASTRUCTURE>
+Data Models
+These are the plain data classes (models) that represent the shape of information flowing between the database and the UI.
+The Models:
+
+AgentData — represents an agent/investigator with their ID and name parts
+CaseFile — the main case record; holds all case details and optionally carries a CaseMetaData object as a nested document reference
+CaseMetaData — represents the physical PDF file attached to a case; stores the filename, file path, who uploaded it, and when. It can also carry a back-reference to its parent CaseFile
+CaseStatus — simple lookup model for status dropdown (e.g. Open, Closed)
+CaseType — simple lookup model for case type dropdown (e.g. Crime, Service, Misc)
+CurrentUser — a static session class that holds the currently logged-in user's info across the whole application; no instantiation needed, just read anywhere via CurrentUser.CurrentRole etc.
+
+CurrentUser (static/global session)
+├── CurrentUsername
+├── CurrentFullName
+├── CurrentRole
+└── CurrentPassword
+
+CaseFile
+├── caseId
+├── caseYear
+├── caseType ──────────→ CaseType
+│                        ├── type_ID
+│                        └── type_name
+├── caseNo
+├── caseSubject
+├── caseNature
+├── caseComplainant
+├── caseAgent ─────────→ AgentData
+│                        ├── agentID
+│                        └── agentlastName
+├── caseStatus ────────→ CaseStatus
+│                        ├── status_id
+│                        └── status_name
+└── Document ──────────→ CaseMetaData
+                         ├── documentid
+                         ├── caseId
+                         ├── CaseFileName
+                         ├── CaseFilePath
+                         ├── CaseUploadedBy
+                         ├── CaseUploadAt
+                         └── Case ──────→ (back-ref to CaseFile)
+
+MySQL: case_file_management_system
+│
+├── users
+│   └── CurrentUser (static session)
+│       ├── CurrentUsername
+│       ├── CurrentFullName
+│       ├── CurrentRole
+│       └── CurrentPassword
+│
+├── agent_info 
+│   └── AgentData
+│       ├── agentID
+│       ├── agentlastName
+│       ├── agentfirstName
+│       └── agentMiddleInitial
+│
+├── case_type
+│   └── CaseType
+│       ├── type_ID
+│       └── type_name
+│
+├── case_status
+│   └── CaseStatus
+│       ├── status_id
+│       └── status_name
+│
+├── case_data 
+│   └── CaseFile
+│       ├── caseId
+│       ├── caseYear
+│       ├── caseType ──→ case_type.type_id
+│       ├── caseNo
+│       ├── caseSubject
+│       ├── caseNature
+│       ├── caseComplainant
+│       ├── caseAgent ──→ agent_info.agent_id
+│       ├── caseStatus ─→ case_status.status_id
+│       └── Document ───→ case_documents
+│
+└── case_documents
+    └── CaseMetaData
+        ├── documentid
+        ├── caseId ─────→ case_data.case_id
+        ├── CaseFileName
+        ├── CaseFilePath
+        ├── CaseUploadedBy
+        └── CaseUploadAt

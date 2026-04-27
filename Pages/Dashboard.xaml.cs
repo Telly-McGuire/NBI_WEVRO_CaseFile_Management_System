@@ -1,15 +1,11 @@
 ﻿using CFMS_WPF.Data;
-using CFMS_WPF.Pages.PopUp_Windows;
 using MySql.Data.MySqlClient;
 using NBI_Login;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace CFMS_WPF.Dashboard
 {

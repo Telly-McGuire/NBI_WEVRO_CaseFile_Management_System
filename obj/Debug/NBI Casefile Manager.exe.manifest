@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="NBI Casefile Manager.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="NBI Casefile Manager.exe" version="1.0.0.14" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="ICON NBI WEVRO LOGO 2026.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NBI Casefile Manager.exe" size="6481848">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NBI Casefile Manager.exe" size="6482872">
       <assemblyIdentity name="NBI Casefile Manager" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jl1QCc2x60LlzWmAAXwrUVlvNhAsqojxQ2lLfeVVKvM=</dsig:DigestValue>
+        <dsig:DigestValue>qNh6AEhS60CJGVzcZQda8u7U6wJejeE2AEJ4u6YJKqs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -270,15 +270,6 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="App.config" size="2572">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BvGSceljFtlUzkIazD+maXSlQCyaNYZ3GH1EbzqaJ5w=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="ICON NBI WEVRO LOGO 2026.ico" size="119869">
     <hash>
       <dsig:Transforms>
@@ -288,13 +279,13 @@
       <dsig:DigestValue>Jcf9lIFDMpWGEAED0T7NmMwbrL2CKEGakYAKxGai+XA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NBI Casefile Manager.exe.config" size="2572">
+  <file name="NBI Casefile Manager.exe.config" size="2574">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BvGSceljFtlUzkIazD+maXSlQCyaNYZ3GH1EbzqaJ5w=</dsig:DigestValue>
+      <dsig:DigestValue>v8OsBrKfcpBxU6Y67wXogcuV+t30dgx58OLgbaFrcOQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="runtimes\win-arm64\native\WebView2Loader.dll" size="147520">

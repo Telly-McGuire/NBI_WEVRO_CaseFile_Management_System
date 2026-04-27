@@ -1,23 +1,12 @@
 ﻿using CFMS_WPF.Data;
-using Microsoft.Web.WebView2.Core;
-using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CFMS_WPF
 {
@@ -78,7 +67,7 @@ namespace CFMS_WPF
 
 				if (rdr.Read())
 				{
-					
+
 					txt_EditYear.Text = rdr["case_year"].ToString();
 					txt_EditCaseNo.Text = rdr["case_number"].ToString();
 					txt_EditSubject.Text = rdr["case_subject"].ToString();

@@ -1,7 +1,7 @@
-C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\App.config
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\runtimes\win-x86\native\WebView2Loader.dll
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\App.config
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\NBI Casefile Manager.exe.config
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\NBI Casefile Manager.exe.manifest
 C:\Users\IFDBS119\CFMS_WPF\CFMS_WPF\bin\Release\NBI Casefile Manager.application

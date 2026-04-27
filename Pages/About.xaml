@@ -37,9 +37,9 @@
 
 			<StackPanel Margin="0,0,0,10">
 				<TextBlock FontSize="18" FontWeight="DemiBold" Text="Developers : "/>
-				<TextBlock FontSize="18" Text="Ryan Dioven Aguilar" Margin="72,0,0,0"/>
+				<TextBlock FontSize="18" Text="Ryan Dioven V. Aguilar" Margin="72,0,0,0"/>
 				<TextBlock FontSize="18" Text="Leandro Jose B. Erenta" Margin="72,0,0,0"/>
-				<TextBlock FontSize="18" Text="John Achilles V. Volon" Margin="72,0,0,0"/>
+				<TextBlock FontSize="18" Text="John Achilles V. Colon" Margin="72,0,0,0"/>
 				<TextBlock FontSize="18" Text="Ed Carlo Nile L. Parcellano" Margin="72,0,0,0"/>
 				<TextBlock FontSize="18" Text="Julianne Ruth C. Pamplona" Margin="72,0,0,0"/>
 				<TextBlock FontSize="18" Text="Shereene P. Dasal" Margin="72,0,0,0"/>

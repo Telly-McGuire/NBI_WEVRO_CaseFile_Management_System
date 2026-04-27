@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("app.config")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/microsoft.web.webview2.1.0.3912.50/runtimes/win-x86/native/webview2loade" +
     "r.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/microsoft.web.webview2.1.0.3912.50/runtimes/win-x64/native/webview2loade" +

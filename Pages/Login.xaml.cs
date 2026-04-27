@@ -1,5 +1,4 @@
 ﻿using CFMS_WPF;
-using CFMS_WPF.Dashboard;
 using CFMS_WPF.Data;
 using CFMS_WPF.Pages.PopUp_Windows;
 using MySql.Data.MySqlClient;
@@ -65,7 +64,7 @@ namespace NBI_Login
 
 		private void Login_Click(object sender, RoutedEventArgs e)
 		{
-		    CurrentUser.CurrentFullName = ""; 
+			CurrentUser.CurrentFullName = "";
 			CurrentUser.CurrentUsername = login_UsernameBox.Text;
 			CurrentUser.CurrentPassword = login_PasswordBox.Password;
 			CurrentUser.CurrentRole = "";

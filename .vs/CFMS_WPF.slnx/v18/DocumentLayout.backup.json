@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|c:\\users\\ifdbs119\\cfms_wpf\\cfms_wpf\\pages\\popup windows\\editfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\popup windows\\editfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\popup windows\\viewfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\popup windows\\viewfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\popup windows\\uploadfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|c:\\users\\ifdbs119\\cfms_wpf\\cfms_wpf\\pages\\popup windows\\uploadfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\popup windows\\uploadfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|c:\\users\\ifdbs119\\cfms_wpf\\cfms_wpf\\pages\\popup windows\\uploadfile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\popup windows\\uploadfile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\data\\setconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:data\\setconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|c:\\users\\ifdbs119\\cfms_wpf\\cfms_wpf\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -53,65 +45,46 @@
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EditFile.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\EditFile.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\PopUp Windows\\EditFile.xaml.cs",
-              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\EditFile.xaml.cs",
-              "RelativeToolTip": "Pages\\PopUp Windows\\EditFile.xaml.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAYwL4AAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T07:10:04.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ViewFile.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\ViewFile.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\PopUp Windows\\ViewFile.xaml.cs",
-              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\ViewFile.xaml.cs",
-              "RelativeToolTip": "Pages\\PopUp Windows\\ViewFile.xaml.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAqwJIAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T06:13:02.324Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SetConnection.cs",
-              "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Data\\SetConnection.cs",
-              "RelativeDocumentMoniker": "Data\\SetConnection.cs",
-              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Data\\SetConnection.cs",
-              "RelativeToolTip": "Data\\SetConnection.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T05:59:15.918Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "UploadFile.xaml.cs",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\UploadFile.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\PopUp Windows\\UploadFile.xaml.cs",
               "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\UploadFile.xaml.cs",
               "RelativeToolTip": "Pages\\PopUp Windows\\UploadFile.xaml.cs",
-              "ViewState": "AgIAAKMAAAAAAAAAAAAqwKoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJ4AAAAAAAAAAADwv60AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T05:53:57.241Z"
+              "WhenOpened": "2026-04-27T03:04:40.85Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\App.config",
-              "RelativeDocumentMoniker": "App.config",
-              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\App.config",
-              "RelativeToolTip": "App.config",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAIwAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-04-23T05:53:42.611Z"
+              "DocumentIndex": 1,
+              "Title": "UploadFile.xaml",
+              "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\UploadFile.xaml",
+              "RelativeDocumentMoniker": "Pages\\PopUp Windows\\UploadFile.xaml",
+              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\UploadFile.xaml",
+              "RelativeToolTip": "Pages\\PopUp Windows\\UploadFile.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-27T03:04:36.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "MainViewModel.cs",
+              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\MainViewModel.cs",
+              "RelativeToolTip": "MainViewModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T02:37:58.312Z",
+              "EditorCaption": ""
             }
           ]
         }

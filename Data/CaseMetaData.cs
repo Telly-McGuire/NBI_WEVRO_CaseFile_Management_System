@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CFMS_WPF.Data
 {
-	public class CaseMetaData 
+	public class CaseMetaData
 	{
 		public int documentid { get; set; }
 		public int caseId { get; set; }
@@ -15,7 +11,7 @@ namespace CFMS_WPF.Data
 		public string CaseUploadedBy { get; set; }
 		public DateTime CaseUploadAt { get; set; }
 
-		public CaseFile Case {  get; set; }
+		public CaseFile Case { get; set; }
 
 	}
 }

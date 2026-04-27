@@ -2,18 +2,8 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CFMS_WPF.AddAgent
 {
@@ -110,9 +100,9 @@ namespace CFMS_WPF.AddAgent
 				cmd = new MySqlCommand(
 					"INSERT INTO agent_info " +
 					"(last_name, first_name, middle_name) " +
-					"VALUES ('" + txt_AgentLastName.Text + 
-					"','" + txt_AgentFirstName.Text + 
-					"','" + txt_AgentMI.Text + "');",con);
+					"VALUES ('" + txt_AgentLastName.Text +
+					"','" + txt_AgentFirstName.Text +
+					"','" + txt_AgentMI.Text + "');", con);
 				cmd.ExecuteNonQuery();
 
 				MessageBox.Show("Agent added successfully!",
@@ -120,7 +110,7 @@ namespace CFMS_WPF.AddAgent
 								MessageBoxButton.OK,
 								MessageBoxImage.Information);
 				ClearFields();
-				LoadAgents(); 
+				LoadAgents();
 			}
 			catch (Exception ex)
 			{
@@ -143,18 +133,18 @@ namespace CFMS_WPF.AddAgent
 				this.SelectedAgent = agent;
 
 				txt_AgentId.Text = agent.agentID.ToString();
-				txt_AgentFirstName.Text=agent.agentfirstName;
-				txt_AgentLastName.Text=agent.agentlastName;
-				txt_AgentMI.Text=agent.agentMiddleInitial;
+				txt_AgentFirstName.Text = agent.agentfirstName;
+				txt_AgentLastName.Text = agent.agentlastName;
+				txt_AgentMI.Text = agent.agentMiddleInitial;
 			}
 		}
 
 
 
 		// ================= CLEAR INPUTS =================
-	
 
-		private void btn_SaveAgent_Click(object sender, RoutedEventArgs e) 
+
+		private void btn_SaveAgent_Click(object sender, RoutedEventArgs e)
 		{
 			if (data_AgentInfo.SelectedItems.Count > 0)
 			{

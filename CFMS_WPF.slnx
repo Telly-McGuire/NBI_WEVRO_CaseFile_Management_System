@@ -1,6 +1,12 @@
 <Solution>
-  <Project Path="../NBI WEVRO Case Manager/NBI WEVRO Case Manager.vdproj" Type="Installer">
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="../NBI Case Manager Setup/NBI Case Manager Setup.vdproj" Type="Installer">
     <Build />
   </Project>
-  <Project Path="CFMS_WPF.csproj" Id="8cb9bd6b-d572-43b0-830f-2cf58ea5ee8b" />
+  <Project Path="CFMS_WPF.csproj" Id="8cb9bd6b-d572-43b0-830f-2cf58ea5ee8b">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
 </Solution>
