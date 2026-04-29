@@ -87,12 +87,12 @@ namespace CFMS_WPF
 			{
 				con.Open();
 				string sql = @"
-            SELECT d.file_path, d.file_name, d.uploaded_at, 
-                   u.username AS uploaded_by
-            FROM case_documents d
-            INNER JOIN users u ON d.uploaded_by = u.user_id
-            WHERE d.case_id = @caseId
-            LIMIT 1";
+					SELECT d.file_path, d.file_name, d.uploaded_at, 
+						   u.username AS uploaded_by
+					FROM case_documents d
+					INNER JOIN users u ON d.uploaded_by = u.user_id
+					WHERE d.case_id = @caseId
+					LIMIT 1";
 
 				cmd = new MySqlCommand(sql, con);
 				cmd.Parameters.AddWithValue("@caseId", _caseId);
@@ -104,15 +104,27 @@ namespace CFMS_WPF
 
 					string filePath = rdr["file_path"].ToString();
 
-					// Normalize: replace forward slashes with backslashes
+					// Normalize all slashes to backslashes
 					filePath = filePath.Replace("/", "\\");
 
-					// Replace whatever IP/hostname is stored with the one from config
-					// This handles both //192.168.x.x/... and \\OldHostname\... cases
+					// Remove leading \\ or \\ equivalent so we can rebuild cleanly
+					// Handles both \\hostname\share and //hostname/share (after replacement)
 					if (filePath.StartsWith("\\\\"))
 					{
-						int shareStart = filePath.IndexOf("\\", 2); // find end of \\hostname
-						filePath = $@"\\{serverIP}" + filePath.Substring(shareStart);
+						// Find where the hostname ends (after \\)
+						int hostEnd = filePath.IndexOf("\\", 2);
+
+						if (hostEnd >= 0)
+						{
+							// Rebuild with the IP from config, preserving the rest of the path
+							string sharePath = filePath.Substring(hostEnd); // e.g. \wevro case files 2005-2022\CRIME
+							filePath = $@"\\{serverIP}{sharePath}";
+						}
+						else
+						{
+							// No share found, just replace the host
+							filePath = $@"\\{serverIP}";
+						}
 					}
 
 					// Fill metadata and close reader BEFORE await
@@ -127,12 +139,14 @@ namespace CFMS_WPF
 						await PdfViewer.EnsureCoreWebView2Async();
 						PdfViewer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
 						PdfViewer.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-						string uri = new Uri(filePath).AbsoluteUri;
+
+						// Manually build the URI to handle spaces and special characters correctly
+						string uri = "file:" + filePath.Replace("\\", "/");
 						PdfViewer.CoreWebView2.Navigate(uri);
 					}
 					else
 					{
-						MessageBox.Show("File not found at: " + filePath,
+						MessageBox.Show("File not found at:\n" + filePath,
 										"Missing File",
 										MessageBoxButton.OK,
 										MessageBoxImage.Warning);
@@ -152,13 +166,36 @@ namespace CFMS_WPF
 			}
 			finally
 			{
-				con.Close();
+				if (con.State != System.Data.ConnectionState.Closed)
+					con.Close();
 			}
 		}
 
 
 		private void Edit_Click(object sender, RoutedEventArgs e)
 		{
+			// Open the EditFile window for the current case
+			try
+			{
+				EditFile edit = new EditFile(_caseId);
+				edit.Owner = this;
+				edit.ShowDialog();
+
+				// Ensure connection is fully closed before refresh
+				if (con.State != System.Data.ConnectionState.Closed)
+					con.Close();
+
+				// Refresh both panels with latest DB data
+				LoadCase();
+				LoadPDF();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Unable to open editor:\n" + ex.Message,
+					"Error",
+					MessageBoxButton.OK,
+					MessageBoxImage.Error);
+			}
 		}
 
 

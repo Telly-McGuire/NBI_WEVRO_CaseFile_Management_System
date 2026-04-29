@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NBI Casefile Manager.exe" size="6462392">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NBI Casefile Manager.exe" size="6466488">
       <assemblyIdentity name="NBI Casefile Manager" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AhQUMhBkp3FLj2tIXZ4FTbmk2S3pyAJMRRB1L9ozL6M=</dsig:DigestValue>
+        <dsig:DigestValue>YbelF1+xIwsigwNXsZTO2lnF6xT3l6+Hb2NEuErAMek=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -279,13 +279,13 @@
       <dsig:DigestValue>Jcf9lIFDMpWGEAED0T7NmMwbrL2CKEGakYAKxGai+XA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NBI Casefile Manager.exe.config" size="2564">
+  <file name="NBI Casefile Manager.exe.config" size="2714">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>u+quhvSZxB539Qt4k9AwZEk/u+4peUxojQkZO4iDbeo=</dsig:DigestValue>
+      <dsig:DigestValue>2REOwb0/+q+asjFo/zEctFTW3Kc+kW9JCtKoEl/nvgw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="runtimes\win-x64\native\WebView2Loader.dll" size="159344">

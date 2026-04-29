@@ -212,7 +212,7 @@
 										  Margin="0,0,8,0"/>
 
 									<TextBlock
-											   VerticalAlignment="Center" Text="Uplod File"/>
+											   VerticalAlignment="Center" Text="Upload File"/>
 								</StackPanel>
 
 							</Button>

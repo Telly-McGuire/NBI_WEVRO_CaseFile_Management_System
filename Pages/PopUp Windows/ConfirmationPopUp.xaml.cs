@@ -67,12 +67,13 @@ namespace CFMS_WPF
 				}
 
 
-				// Map caseType string to ID
+                // Map caseType string to ID (ensure IDs match case_type table)
 				int caseTypeId = 0;
-				switch (_caseFile.caseType)
+				switch ((_caseFile.caseType ?? string.Empty).Trim())
 				{
-					case "Service": caseTypeId = 1; break;
-					case "Crime": caseTypeId = 2; break;
+					// Crime should be type_id = 1, Service = 2, Misc = 3
+					case "Crime": caseTypeId = 1; break;
+					case "Service": caseTypeId = 2; break;
 					case "Misc": caseTypeId = 3; break;
 				}
 
@@ -101,18 +102,34 @@ namespace CFMS_WPF
 				var userResult = cmd.ExecuteScalar();
 				if (userResult != null) uploadedById = Convert.ToInt32(userResult);
 
-				// Insert into case_data
+                // Insert into case_data using parameters to avoid SQL injection/escaping issues
 				cmd = new MySqlCommand(
 					"INSERT INTO case_data (case_type, case_year, case_number, case_subject, case_nature, complainant, agent_id, status) " +
-					"VALUES (" + caseTypeId + ", '" + _caseFile.caseYear + "', '" + _caseFile.caseNo + "', '" + _caseFile.caseSubject + "', '" + _caseFile.caseNature + "', '" + _caseFile.caseComplainant + "', " + agentId + ", " + statusId + "); " +
-					"SELECT LAST_INSERT_ID();", con);
+					"VALUES (@caseType, @caseYear, @caseNumber, @caseSubject, @caseNature, @complainant, @agentId, @status); SELECT LAST_INSERT_ID();",
+					con);
+
+				cmd.Parameters.AddWithValue("@caseType", caseTypeId);
+				cmd.Parameters.AddWithValue("@caseYear", _caseFile.caseYear ?? string.Empty);
+				cmd.Parameters.AddWithValue("@caseNumber", _caseFile.caseNo ?? string.Empty);
+				cmd.Parameters.AddWithValue("@caseSubject", _caseFile.caseSubject ?? string.Empty);
+				cmd.Parameters.AddWithValue("@caseNature", _caseFile.caseNature ?? string.Empty);
+				cmd.Parameters.AddWithValue("@complainant", _caseFile.caseComplainant ?? string.Empty);
+				cmd.Parameters.AddWithValue("@agentId", agentId);
+				cmd.Parameters.AddWithValue("@status", statusId);
 
 				int caseId = Convert.ToInt32(cmd.ExecuteScalar());
 
-				// Insert into case_documents
+				// Insert into case_documents using parameters
 				cmd = new MySqlCommand(
 					"INSERT INTO case_documents (case_id, file_name, file_path, uploaded_by, uploaded_at) " +
-					"VALUES (" + caseId + ", '" + _caseFile.Document.CaseFileName + "', '" + _caseFile.Document.CaseFilePath + "', " + uploadedById + ", '" + _caseFile.Document.CaseUploadAt.ToString("yyyy-MM-dd HH:mm:ss") + "');", con);
+					"VALUES (@caseId, @fileName, @filePath, @uploadedBy, @uploadedAt);",
+					con);
+
+				cmd.Parameters.AddWithValue("@caseId", caseId);
+				cmd.Parameters.AddWithValue("@fileName", _caseFile.Document?.CaseFileName ?? string.Empty);
+				cmd.Parameters.AddWithValue("@filePath", _caseFile.Document?.CaseFilePath ?? string.Empty);
+				cmd.Parameters.AddWithValue("@uploadedBy", uploadedById);
+				cmd.Parameters.AddWithValue("@uploadedAt", _caseFile.Document?.CaseUploadAt.ToString("yyyy-MM-dd HH:mm:ss"));
 
 				cmd.ExecuteNonQuery();
 

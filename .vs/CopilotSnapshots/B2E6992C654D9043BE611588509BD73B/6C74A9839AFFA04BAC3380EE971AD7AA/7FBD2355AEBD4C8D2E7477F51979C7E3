@@ -1,0 +1,540 @@
+﻿using CFMS_WPF.Data;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace CFMS_WPF
+{
+
+	public partial class EditFile : Window
+	{
+		private MySqlDataReader rdr;
+		private MySqlConnection con;
+		private MySqlCommand cmd;
+		private int _caseId;
+		public EditFile(int caseId)
+		{
+			InitializeComponent();
+			SetConnection();
+
+			_caseId = caseId;
+
+			// Load case details and PDF
+			LoadCase();
+			LoadPDF();
+			BuildFileName();
+		}
+
+
+		public void SetConnection()
+		{
+			SetConnection db = new SetConnection();
+			con = db.GetConnection();
+		}
+		private void LoadCase()
+		{
+			try
+			{
+				con.Open();
+
+				string sql = @"
+            SELECT ct.type_name AS case_type,
+                   c.case_year,
+                   c.case_number,
+				   c.case_subject,
+				   c.case_nature,
+                   c.complainant,
+                   a.last_name AS agent_name,
+                   s.status_name AS status
+            FROM case_data c
+            INNER JOIN case_type ct ON c.case_type = ct.type_id
+            INNER JOIN agent_info a ON c.agent_id = a.agent_id
+            INNER JOIN case_status s ON c.status = s.status_id
+            WHERE c.case_id = @caseId";
+
+				cmd = new MySqlCommand(sql, con);
+				cmd.Parameters.AddWithValue("@caseId", _caseId);
+				rdr = cmd.ExecuteReader();
+
+				string caseType = null;
+				string agentName = null;
+				string statusName = null;
+
+				if (rdr.Read())
+				{
+
+					txt_EditYear.Text = rdr["case_year"].ToString();
+					txt_EditCaseNo.Text = rdr["case_number"].ToString();
+					txt_EditSubject.Text = rdr["case_subject"].ToString();
+					txt_EditNature.Text = rdr["case_nature"].ToString();
+					txt_EditComplainants.Text = rdr["complainant"].ToString();
+
+					caseType = rdr["case_type"].ToString();
+					agentName = rdr["agent_name"].ToString();
+					statusName = rdr["status"].ToString();
+				}
+
+				rdr.Close();
+				con.Close(); // 🔹 close before calling other loaders
+
+				// Now load combobox lists with fresh connections
+				LoadCaseTypes(caseType);
+				LoadAgents(agentName);
+				LoadCaseStatus(statusName);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error loading case details:\n" + ex.Message,
+								"Database Error",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
+			}
+			finally
+			{
+				if (con.State == ConnectionState.Open)
+					con.Close();
+			}
+		}
+
+
+
+		private async void LoadPDF()
+		{
+			try
+			{
+				con.Open();
+				string sql = @"
+            SELECT d.file_path, d.file_name, d.uploaded_at, 
+                   u.username AS uploaded_by
+            FROM case_documents d
+            INNER JOIN users u ON d.uploaded_by = u.user_id
+            WHERE d.case_id = @caseId
+            LIMIT 1";
+
+				cmd = new MySqlCommand(sql, con);
+				cmd.Parameters.AddWithValue("@caseId", _caseId);
+				rdr = cmd.ExecuteReader();
+
+				if (rdr.Read())
+				{
+					string serverIP = System.Configuration.ConfigurationManager.AppSettings["DbServer"];
+
+					string filePath = rdr["file_path"].ToString();
+
+					// Normalize forward slashes to backslashes
+					filePath = filePath.Replace("/", "\\");
+
+					// Swap in the IP from app.config
+					if (filePath.StartsWith("\\\\"))
+					{
+						int shareStart = filePath.IndexOf("\\", 2);
+						filePath = $@"\\{serverIP}" + filePath.Substring(shareStart);
+					}
+
+					// Fill metadata and close reader BEFORE await
+					txt_EditFileName.Text = rdr["file_name"].ToString();
+					UsernameText.Text = rdr["uploaded_by"].ToString();
+					UploadDateText.Text = Convert.ToDateTime(rdr["uploaded_at"]).ToString("yyyy-MM-dd");
+
+					rdr.Close();
+
+					if (System.IO.File.Exists(filePath))
+					{
+						await PdfViewer.EnsureCoreWebView2Async();
+
+						PdfViewer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+						PdfViewer.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+
+						string uri = new Uri(filePath).AbsoluteUri;
+						PdfViewer.CoreWebView2.Navigate(uri);
+					}
+					else
+					{
+						MessageBox.Show("File not found at: " + filePath,
+										"Missing File",
+										MessageBoxButton.OK,
+										MessageBoxImage.Warning);
+					}
+				}
+				else
+				{
+					rdr.Close();
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error loading PDF:\n" + ex.Message,
+								"Database Error",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
+			}
+			finally
+			{
+				con.Close();
+			}
+		}
+
+		private void LoadCaseTypes(string currentType = null)
+		{
+			try
+			{
+				con.Open();
+				cmd = new MySqlCommand("SELECT type_id, type_name FROM case_type", con);
+				rdr = cmd.ExecuteReader();
+
+				var TypeList = new List<CaseType>();
+				while (rdr.Read())
+				{
+					TypeList.Add(new CaseType
+					{
+						type_ID = Convert.ToInt32(rdr["type_id"]),
+						type_name = rdr["type_name"].ToString()
+					});
+				}
+				rdr.Close();
+				con.Close();
+
+				Edit_CaseTypeComboBox.ItemsSource = TypeList;
+				Edit_CaseTypeComboBox.DisplayMemberPath = "type_name";
+
+				if (!string.IsNullOrEmpty(currentType))
+				{
+					Edit_CaseTypeComboBox.SelectedItem =
+						TypeList.FirstOrDefault(t => t.type_name == currentType);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error Case Types:\n" + ex.Message,
+					"Database Error",
+					MessageBoxButton.OK,
+					MessageBoxImage.Error);
+			}
+			finally
+			{
+				if (con.State == ConnectionState.Open)
+					con.Close();
+			}
+		}
+
+
+		private void LoadAgents(string currentAgent = null)
+		{
+			try
+			{
+				con.Open();
+				cmd = new MySqlCommand("SELECT agent_id, last_name, first_name, middle_name FROM agent_info", con);
+				rdr = cmd.ExecuteReader();
+
+				var Agentlist = new List<AgentData>();
+
+				while (rdr.Read())
+				{
+					Agentlist.Add(new AgentData
+					{
+						agentID = Convert.ToInt32(rdr["agent_id"]),
+						agentlastName = rdr["last_name"].ToString()
+					});
+				}
+				rdr.Close();
+				con.Close();
+
+				Edit_AgentNameComboBox.ItemsSource = Agentlist;
+				Edit_AgentNameComboBox.DisplayMemberPath = "agentlastName";
+
+				if (!string.IsNullOrEmpty(currentAgent))
+				{
+					Edit_AgentNameComboBox.SelectedItem =
+						Agentlist.FirstOrDefault(a => a.agentlastName == currentAgent);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error Loading Agents:\n" + ex.Message,
+								"Database Error",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
+			}
+			finally
+			{
+				if (con.State == ConnectionState.Open)
+					con.Close();
+			}
+		}
+
+		private void LoadCaseStatus(string currentStatus = null)
+		{
+			try
+			{
+				con.Open();
+				cmd = new MySqlCommand("SELECT status_id, status_name FROM case_status", con);
+				rdr = cmd.ExecuteReader();
+
+				var StatusList = new List<CaseStatus>();
+
+				while (rdr.Read())
+				{
+					StatusList.Add(new CaseStatus
+					{
+						status_id = Convert.ToInt32(rdr["status_id"]),
+						status_name = rdr["status_name"].ToString()
+					});
+				}
+				rdr.Close();
+				con.Close();
+
+				Edit_StatusComboBox.ItemsSource = StatusList;
+				Edit_StatusComboBox.DisplayMemberPath = "status_name";
+
+				if (!string.IsNullOrEmpty(currentStatus))
+				{
+					Edit_StatusComboBox.SelectedItem =
+						StatusList.FirstOrDefault(s => s.status_name == currentStatus);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error Loading Status:\n" + ex.Message,
+								"Database Error",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
+			}
+			finally
+			{
+				if (con.State == ConnectionState.Open)
+					con.Close();
+			}
+		}
+
+
+		private void BuildFileName()
+		{
+			string prefix = string.Empty;
+
+			// Case type prefix
+			if (Edit_CaseTypeComboBox.SelectedItem is CaseType selectedType)
+			{
+				switch (selectedType.type_name)
+				{
+					case "Crime": prefix = "C"; break;
+					case "Service": prefix = "S"; break;
+					case "Misc": prefix = "M"; break;
+				}
+			}
+
+			// Year (last 2 digits)
+			string year = string.Empty;
+			if (int.TryParse(txt_EditYear.Text.Trim(), out int yearValue))
+			{
+				year = (yearValue % 100).ToString("D2");
+			}
+
+			string caseNo = txt_EditCaseNo.Text.Trim();
+			string complainant = txt_EditComplainants.Text.Trim().Replace(" ", "_");
+			string agent = Edit_AgentNameComboBox.SelectedItem is AgentData a ? a.agentlastName : string.Empty;
+			string status = Edit_StatusComboBox.SelectedItem is CaseStatus s ? s.status_name : string.Empty;
+
+			// Build filename parts
+			var parts = new List<string>();
+			if (!string.IsNullOrEmpty(prefix)) parts.Add(prefix);
+			if (!string.IsNullOrEmpty(year)) parts.Add(year);
+			if (!string.IsNullOrEmpty(caseNo)) parts.Add(caseNo);
+			if (!string.IsNullOrEmpty(complainant)) parts.Add(complainant);
+			if (Edit_MultipleComplainantsCheckBox.IsChecked == true)
+			{
+				if (!parts.Contains("et.al."))
+					parts.Add("et.al.");
+			}
+			else
+			{
+				parts.Remove("et.al.");
+			}
+			if (!string.IsNullOrEmpty(agent)) parts.Add(agent);
+			if (!string.IsNullOrEmpty(status)) parts.Add(status);
+
+			// Join with dashes
+			txt_EditFileName.Text = string.Join("-", parts);
+		}
+
+
+		private void Save_Click(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				con.Open();
+
+				// Update case_data table
+				string sqlCase = "UPDATE case_data SET " +
+								 "case_year = '" + txt_EditYear.Text.Trim() + "', " +
+								 "case_number = '" + txt_EditCaseNo.Text.Trim() + "', " +
+								 "case_subject = '" + txt_EditSubject.Text.Trim() + "', " +
+								 "case_nature = '" + txt_EditNature.Text.Trim() + "', " +
+								 "complainant = '" + txt_EditComplainants.Text.Trim() + "', " +
+								 "agent_id = " + ((Edit_AgentNameComboBox.SelectedItem as AgentData)?.agentID ?? 0) + ", " +
+								 "status = " + ((Edit_StatusComboBox.SelectedItem as CaseStatus)?.status_id ?? 0) + " " +
+								 "WHERE case_id = " + _caseId;
+
+				cmd = new MySqlCommand(sqlCase, con);
+				cmd.ExecuteNonQuery();
+
+				// Update case_documents table (file name + uploader + date)
+				string sqlDoc = "UPDATE case_documents SET " +
+								"file_name = '" + txt_EditFileName.Text.Trim() + "', " +
+								"uploaded_by = (SELECT user_id FROM users WHERE username = '" + UsernameText.Text.Trim() + "'), " +
+								"uploaded_at = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' " +
+								"WHERE case_id = " + _caseId;
+
+				cmd = new MySqlCommand(sqlDoc, con);
+				cmd.ExecuteNonQuery();
+
+				MessageBox.Show("Case updated successfully!",
+								"Success",
+								MessageBoxButton.OK,
+								MessageBoxImage.Information);
+
+				this.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error saving case:\n" + ex.Message,
+								"Database Error",
+								MessageBoxButton.OK,
+								MessageBoxImage.Error);
+			}
+			finally
+			{
+				con.Close();
+			}
+		}
+
+
+
+		private void AddAgent_Click(object sender, RoutedEventArgs e)
+		{
+			AddAgentPopup popup = new AddAgentPopup();
+			popup.ShowDialog();
+		}
+		private void Cancel_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
+
+		private void Metadata_Changed(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void PreviousPage_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void NextPage_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void FileNameBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+		private void YearBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		{
+
+		}
+		private void YearBox_Pasting(object sender, DataObjectPastingEventArgs e)
+		{
+
+		}
+
+		private void txt_EditCaseType_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+		private void EditYear_Changed(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void txt_EditCaseNo_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void txt_EditComplainants_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void txt_EditAgent_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void txt_EditStatus_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void Edit_AgentNameComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void Edit_StatusComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void Upload_CaseTypeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+		private void Edit_MultipleComplainantsCheckBox_Changed(object sender, RoutedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void Edit_MultipleComplainantsCheckBox_Checked(object sender, RoutedEventArgs e)
+		{
+			BuildFileName();
+		}
+		private void Edit_MultipleComplainantsCheckBox_UnChecked(object sender, RoutedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private void txt_EditCaseSubject_Changed(object sender, TextChangedEventArgs e)
+		{
+			BuildFileName();
+		}
+
+		private bool _isUpdatingEditNature = false;
+
+		private void txt_EditNature_Changed(object sender, TextChangedEventArgs e)
+		{
+			if (_isUpdatingEditNature) return;
+
+			var textBox = sender as TextBox;
+			if (textBox == null) return;
+
+			string upper = textBox.Text.ToUpper();
+
+			if (textBox.Text != upper)
+			{
+				_isUpdatingEditNature = true;
+
+				int caretIndex = textBox.CaretIndex;
+				textBox.Text = upper;
+				textBox.CaretIndex = caretIndex;
+
+				_isUpdatingEditNature = false;
+			}
+		}
+	}
+}

@@ -73,8 +73,9 @@ namespace NBI_Login
 			{
 				con.Open();
 				using (var cmd = new MySqlCommand(@"SELECT full_name, role 
-													FROM users 
-													WHERE username = @user AND password = @pass", con))
+                                            FROM users 
+                                            WHERE BINARY username = @user 
+                                            AND BINARY password = @pass", con))
 				{
 					cmd.Parameters.AddWithValue("@user", login_UsernameBox.Text);
 					cmd.Parameters.AddWithValue("@pass", login_PasswordBox.Password);
@@ -90,11 +91,10 @@ namespace NBI_Login
 							var MainWindow = new MainWindow();
 							MainWindow.Show();
 							this.Close();
-
 						}
 						else
 						{
-							MessageBox.Show("Wrong Password");
+							MessageBox.Show("Invalid username or password.");
 						}
 					}
 				}
@@ -138,6 +138,28 @@ namespace NBI_Login
 		private void login_UsernameBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
 		{
 
+		}
+
+		private void UsernameBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			if (e.Key == System.Windows.Input.Key.Enter)
+			{
+				if (login_PasswordBox.Visibility == Visibility.Visible)
+					login_PasswordBox.Focus();
+				else
+					VisiblePasswordBox.Focus();
+
+				e.Handled = true;
+			}
+		}
+
+		private void PasswordBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			if (e.Key == System.Windows.Input.Key.Enter)
+			{
+				Login_Click(sender, new RoutedEventArgs());
+				e.Handled = true;
+			}
 		}
 	}
 }
