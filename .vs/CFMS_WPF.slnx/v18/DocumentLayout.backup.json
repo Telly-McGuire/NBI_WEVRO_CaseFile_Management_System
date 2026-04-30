@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|c:\\users\\ifdbs119\\cfms_wpf\\cfms_wpf\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,20 +23,12 @@
       "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\popup windows\\viewfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\files.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\files.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\popup windows\\editfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\popup windows\\editfile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|solutionrelative:pages\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CB9BD6B-D572-43B0-830F-2CF58EA5EE8B}|CFMS_WPF.csproj|C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\pages\\popup windows\\confirmationpopup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,11 +54,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -99,30 +99,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Login.xaml.cs",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\Login.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\Login.xaml.cs",
               "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\Login.xaml.cs",
               "RelativeToolTip": "Pages\\Login.xaml.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAcwFsAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAuwFsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T01:33:54.301Z"
+              "WhenOpened": "2026-04-29T01:33:54.301Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Login.xaml",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\Login.xaml",
               "RelativeDocumentMoniker": "Pages\\Login.xaml",
-              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\Login.xaml",
-              "RelativeToolTip": "Pages\\Login.xaml",
+              "ToolTip": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\Login.xaml*",
+              "RelativeToolTip": "Pages\\Login.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-29T01:33:46.851Z"
+              "WhenOpened": "2026-04-29T01:33:46.851Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ViewFile.xaml.cs",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\ViewFile.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\PopUp Windows\\ViewFile.xaml.cs",
@@ -135,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "EditFile.xaml.cs",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\PopUp Windows\\EditFile.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\PopUp Windows\\EditFile.xaml.cs",
@@ -159,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Files.xaml.cs",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\Pages\\Files.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\Files.xaml.cs",
@@ -206,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\IFDBS119\\CFMS_WPF\\CFMS_WPF\\App.config",
               "RelativeDocumentMoniker": "App.config",
